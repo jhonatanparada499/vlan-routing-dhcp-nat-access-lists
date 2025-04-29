@@ -38,7 +38,7 @@ Both VLAN 2 and VLAN 3 were configured with isolated IP subnets. DHCP pools were
 ### VLAN3 VM – DHCP Lease and Configuration
 ![VLAN3 VM](photos/VM_In_VLAN3_Configuration.jpg)
 
-### VLAN3 Host Pinging VLAN2 (Inter-VLAN Connectivity Test)
+### VLAN3 Host Trying to Ping VLAN2 after applying ACL 
 ![Ping Test](photos/VM_in_VLAN3_Pinging_VLAN2.jpg)
 
 ## Technologies Used
@@ -55,10 +55,3 @@ Both VLAN 2 and VLAN 3 were configured with isolated IP subnets. DHCP pools were
 - Configurations saved after successful validation
 - DHCP leases and NAT sessions captured live
 - Physical workstation setup captured for reference
-
-## Photos
-
-1. `VMs_in_Physical_Location.jpg` — Full setup overview  
-2. `VM_in_VLAN2_Configuration.jpg` — DHCP lease for VLAN2  
-3. `VM_In_VLAN3_Configuration.jpg` — DHCP lease for VLAN3  
-4. `VM_in_VLAN3_Pinging_VLAN2.jpg` — Testing connectivity between VLANs
