@@ -1,0 +1,148 @@
+Router configuration with access-list blocking traffic from VLAN2 out to VLAN3
+
+
+Router#sh run
+Building configuration...
+
+Current configuration : 1994 bytes
+!
+! Last configuration change at 19:50:17 UTC Tue Apr 29 2025
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no platform punt-keepalive disable-kernel-core
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition Mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+! card type command needed for slot/bay 0/2
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+!
+
+
+
+ip dhcp excluded-address 192.168.1.1
+ip dhcp excluded-address 192.168.2.1
+!
+ip dhcp pool VLAN2POOL
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 8.8.8.8
+!
+ip dhcp pool VLAN3POOL
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.1
+ dns-server 8.8.8.8
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+multilink bundle-name authenticated
+!
+!
+!
+!
+license udi pid ISR4321/K9 sn FDO20420PL0
+!
+!
+redundancy
+ mode none
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0/0
+ no ip address
+ ip nat inside
+ negotiation auto
+!
+interface GigabitEthernet0/0/0.2
+ encapsulation dot1Q 2
+ ip address 192.168.1.1 255.255.255.0
+ ip nat inside
+!
+interface GigabitEthernet0/0/0.3
+ encapsulation dot1Q 3
+ ip address 192.168.2.1 255.255.255.0
+ ip nat inside
+ ip access-group BLOCKVLAN2 out
+!
+interface GigabitEthernet0/0/1
+ ip address dhcp
+ ip nat outside
+ negotiation auto
+!
+interface Serial0/1/0
+ no ip address
+ shutdown
+!
+interface Serial0/1/1
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0
+ vrf forwarding Mgmt-intf
+ no ip address
+ shutdown
+ negotiation auto
+!
+ip nat inside source list VLANLIST interface GigabitEthernet0/0/1 overload
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+ip tftp source-interface GigabitEthernet0
+!
+!
+ip access-list standard BLOCKVLAN2
+ deny   192.168.1.0 0.0.0.255
+ permit any
+ip access-list standard VLANLIST
+ permit 192.168.1.0 0.0.0.255
+ permit 192.168.2.0 0.0.0.255
+!
+!
+!
+!
+control-plane
+!
+!
+line con 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ login
+!
+!
+end
