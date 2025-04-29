@@ -8,11 +8,11 @@ Both VLAN 2 and VLAN 3 were configured with isolated IP subnets. DHCP pools were
 
 ## Physical Topology
 
-![Topology](photos/Physical_Network_Topology.jpg)
+![](photos/Physical_Network_Topology.jpg)
 
 ## Logical Topology
 
-![Topology](photos/Logical_Network_Topology.jpg)
+![](photos/Logical_Network_Topology.png)
 
 ## Configurations
 
