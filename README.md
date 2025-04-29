@@ -2,10 +2,9 @@
 
 ## Overview
 
-This project demonstrates the configuration of a Cisco router and managed switch to support inter-VLAN routing, DHCP-based IP address assignment, NAT overload (PAT) for internet access, and ACL-based traffic restrictions between VLANs.
+In order to support inter-VLAN routing, DHCP-based IP address assignment, NAT overload (PAT) for internet access, and ACL-based traffic restrictions between VLANs, this project shows how to configure a Cisco router and managed switch.
 
-Both VLAN 2 and VLAN 3 were configured with isolated IP subnets. DHCP pools were created on the router to serve hosts dynamically, and an optional ACL was applied to restrict VLAN2 from accessing VLAN3. The final setup allowed both VLANs to access the internet while maintaining selective internal segmentation.
-
+Isolated IP subnets were set up for both VLANs 2 and 3. An optional ACL was used to prevent VLAN2 from accessing VLAN3, and DHCP pools were set up on the router to serve hosts dynamically. The final configuration preserved selective internal segmentation while enabling internet access for both VLANs.
 ## Physical Topology
 
 ![](photos/Physical_Network_Topology.jpg)
