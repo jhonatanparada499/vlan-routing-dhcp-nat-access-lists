@@ -6,9 +6,13 @@ This project demonstrates the configuration of a Cisco router and managed switch
 
 Both VLAN 2 and VLAN 3 were configured with isolated IP subnets. DHCP pools were created on the router to serve hosts dynamically, and an optional ACL was applied to restrict VLAN2 from accessing VLAN3. The final setup allowed both VLANs to access the internet while maintaining selective internal segmentation.
 
-## Topology
+## Physical Topology
 
 ![Topology](photos/Physical_Network_Topology.jpg)
+
+## Logical Topology
+
+![Topology](photos/Logical_Network_Topology.jpg)
 
 ## Configurations
 
